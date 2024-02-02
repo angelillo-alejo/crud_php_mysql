@@ -61,8 +61,8 @@ $usuarios = mysqli_query($con, $query);
                             <td><?php echo $fila['telefono']?></td>
                             <td><?php echo $fila['email']?></td>
                             <td>
-                            <a href="editar.php?id = <?php echo $fila['id'] ?>" class="btn btn-primary"> Editar</a>
-                            <a href="borrar.php?id = <?php echo $fila['id'] ?>" class="btn btn-danger"> Borrar</a>
+                            <a href="editar.php?id=<?php echo $fila['id']?>" class="btn btn-primary">Editar</a>
+                            <a href="borrar.php?id=<?php echo $fila['id']?>" class="btn btn-danger">Borrar</a>
                             </td>
                         </tr> 
 
