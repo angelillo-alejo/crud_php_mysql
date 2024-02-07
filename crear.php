@@ -19,7 +19,7 @@ if (isset($_POST['crearRegistro'])){
     !isset($email) || $email == '' ){
         $error = 'Algunos campos estan vacios';
     }else{
-        $query = "INSERT INTO usuarios(nombre, apellidos,telefono, email)
+        $query = "INSERT INTO usuarios(nombre, apellidos, telefono, email)
         VALUES('$nombre', '$apellidos', '$telefono', '$email')";
         if (!mysqli_query($con, $query)){
             die('Error' .mysqli_error($con));
