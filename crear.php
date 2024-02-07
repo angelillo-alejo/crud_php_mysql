@@ -25,8 +25,8 @@ if (isset($_POST['crearRegistro'])){
             die('Error' .mysqli_error($con));
             $error = 'No se pudo crear el registro';
         }else{
-            $mensaje = 'Registro creado correctamente';
             header('Location: index.php');
+            $mensaje = 'Registro creado correctamente';
             exit();
         }
     }

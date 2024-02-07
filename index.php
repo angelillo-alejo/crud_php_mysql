@@ -53,7 +53,6 @@ $usuarios = mysqli_query($con, $query);
                     </thead>
                     <tbody>
                     <?php while ($fila = mysqli_fetch_assoc($usuarios)) : ?>
-
                         <tr>
                             <td><?php echo $fila['id']?></td>
                             <td><?php echo $fila['nombre']?></td>
@@ -65,7 +64,6 @@ $usuarios = mysqli_query($con, $query);
                             <a href="borrar.php?id=<?php echo $fila['id']?>" class="btn btn-danger">Borrar</a>
                             </td>
                         </tr> 
-
                     <?php endwhile;?>
                     </tbody>
                 </table>

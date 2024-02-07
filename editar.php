@@ -2,11 +2,11 @@
 include 'conexion.php';
 //Obtener el id enviado del index
 $idRegistro = $_GET['id'];
-//  var_dump($_GET['id']);
 
+var_dump($idRegistro);
 //Selecionar datos
 $query = "SELECT * FROM usuarios where id='".$idRegistro."'";
-$usuario = mysqli_query($con, $query) or die (mysqli_error( ));
+$usuario = mysqli_query($con, $query) or die (mysqli_error());
 
 //Volcamos los datos de ese registro en una fila
 $fila = mysqli_fetch_assoc($usuario);

@@ -1,7 +1,7 @@
 <?php
 
 // Conectar a mysql, lo haremos con mysqli
-$con = mysqli_connect('localhost', 'root', 'root', 'crud_php_mysql');
+$con=mysqli_connect('localhost', 'root', 'root', 'crud_php_mysql');
 
 //Probar la conexion
 if(mysqli_connect_errno()){
