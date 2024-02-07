@@ -32,9 +32,16 @@ $usuarios = mysqli_query($con, $query);
 
     <div class="container">
 
+        <?php if(isset($_GET['mensaje'])) : ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><?php echo $_GET['mensaje']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>     
+
     <div class="row">
             <div class="col-sm-4 offset-8">
-                <a href="crear.php" class="btn btn-success w-100"> Crear Nuevo Registro</a>
+                <a href="crear.php" class="btn btn-success w-100">Crear Nuevo Registro</a>
             </div>            
         </div>
 

@@ -3,7 +3,8 @@ include 'conexion.php';
 //Obtener el id enviado del index
 $idRegistro = $_GET['id'];
 
-var_dump($idRegistro);
+// var_dump($idRegistro);
+
 //Selecionar datos
 $query = "SELECT * FROM usuarios where id='".$idRegistro."'";
 $usuario = mysqli_query($con, $query) or die (mysqli_error());
@@ -30,14 +31,14 @@ if (isset($_POST['editarRegistro'])){
     !isset($email) || $email == '' ){
         $error = 'Algunos campos estan vacios';
     }else{
-        $query = "UPDATE usuarios set nombre= '$nombre', apellidos= '$apellidos', telefono='$telefono', email='$email' where id='$idRegistro'";
+        $query = "UPDATE usuarios set nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email' where id='$idRegistro'";
 
         if (!mysqli_query($con, $query)){
             die('Error' .mysqli_error($con));
             $error = 'No se pudo crear el registro';
         }else{
             $mensaje = 'Registro creado correctamente';
-            header('Location: index.php');
+            header('Location: index.php?mensaje='.urldecode($mensaje));
             exit();
         }
     }
@@ -71,26 +72,31 @@ if (isset($_POST['editarRegistro'])){
 
     </div>
         <div class="row caja">
+
+        <?php if(isset($error)) : ?>
+            <h4 class="text-danger text-center"><?php echo $error;?></h4>
+        <?php endif; ?>
+
             <div class="col-sm-6 offset-3">
             <form method="POST" action ='<?php $_SERVER['PHP_SELF']; ?>'>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Ingresa el nombre" value="<?php echo $fila['nombre'];?>">                    
+                    <input type="text" class="form-control" name="nombre" placeholder="Ingresa el nombre" value="<?php echo $fila['nombre']; ?>"required>                    
                 </div>
                 
                 <div class="mb-3">
                     <label for="apellidos" class="form-label">Apellidos:</label>
-                    <input type="text" class="form-control" name="apellidos" placeholder="Ingresa los apellidos" value=" <?php echo $fila['apellidos'];?>">                    
+                    <input type="text" class="form-control" name="apellidos" placeholder="Ingresa los apellidos" value=" <?php echo $fila['apellidos']; ?>"required>                    
                 </div>
 
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Telefono:</label>
-                    <input type="number" class="form-control" name="telefono" placeholder="Ingresa el teléfono" value=" <?php echo $fila['telefono'];?>">                    
+                    <input type="number" class="form-control" name="telefono" placeholder="Ingresa el teléfono" value=" <?php echo $fila['telefono']; ?>"required>                    
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
-                    <input type="email" class="form-control" name="email" placeholder="Ingresa el email" value=" <?php echo $fila['email'];?>">                    
+                    <input type="email" class="form-control" name="email" placeholder="Ingresa el email" value=" <?php echo $fila['email']; ?>"required>                    
                 </div>
               
                 <button type="submit" class="btn btn-primary w-100" name="editarRegistro">Editar Registro</button>

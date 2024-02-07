@@ -25,7 +25,7 @@ if (isset($_POST['crearRegistro'])){
             die('Error' .mysqli_error($con));
             $error = 'No se pudo crear el registro';
         }else{
-            header('Location: index.php');
+            header('Location: index.php?mensaje='.urldecode($mensaje));
             $mensaje = 'Registro creado correctamente';
             exit();
         }
@@ -59,8 +59,12 @@ if (isset($_POST['crearRegistro'])){
 
         <div class="row caja">
 
+        <?php if(isset($error)) : ?>
+            <h4 class="text-danger text-center"><?php echo $error;?></h4>
+        <?php endif;?>
+        
             <div class="col-sm-6 offset-3">
-            <form method="POST" action = '<?php $_SERVER['PHP_SELF']; ?>'>
+            <form method="POST" action='<?php $_SERVER['PHP_SELF']; ?>'>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" name="nombre" placeholder="Ingresa el nombre">                    
@@ -80,9 +84,8 @@ if (isset($_POST['crearRegistro'])){
                     <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" name="email" placeholder="Ingresa el email">                    
                 </div>
-              
-                <button type="submit" class="btn btn-primary w-100" name="crearRegistro">Crear Registro</button>
 
+                <button type="submit" class="btn btn-primary w-100" name="crearRegistro">Crear Registro</button>
                 </form>
             </div>
         </div>
